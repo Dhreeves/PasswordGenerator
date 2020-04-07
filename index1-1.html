@@ -2,13 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
-
+    <title>Simple Password Generator</title>
+    <link rel="stylesheet" href="style1.css">
+    <script src="script1.js" async></script>
 </head>
 
 <body>
@@ -20,26 +19,30 @@
             <div class="card-header">
                 <h2>Generate a Password</h2>
             </div>
-            <form id="passwordGeneratorSpace" id="passwordDisplay" class="card-body">
+            <div class="card-body">
                 <textarea readonly id="password" placeholder="Your Secure Password"
                     aria-label="Generated Password"></textarea>
-                <input type="number" min="8" max="124" id="characterLength">
-            </form>
+                <!-- <input type="password" id="length" min="8" max="124" list="passwords">-->
+            </div>
             <div class="card-footer">
-                <button type="submit" id="generate" class="btn">Generate Password</button>
+                <button id="generate" class="btn">Generate Password</button>
             </div>
         </div>
     </div>
 
     <script type="text/javascript">
-        //Character varibles.
         var passwordLength = prompt("You can have 8-128 characters in your new password. How many would you like?");
         var confirmSpecial = confirm("Do you want special characters in your password.");
         var confirmULet = confirm("Do you want Uppercase letters in your password.");
         var confirmLLet = confirm("Do you want Lowercase letters in your password.");
         var confirmNum = confirm("Do you want numbers in your password.");
 
-
+        window.onload = function () {
+            var generateButton = document.querySelector('#generate');
+            generateButton.addEventListener('click', function () {
+                document.querySelector('#password').value = generate();
+            });
+        }
     </script>
 
 </body>
